@@ -1,0 +1,20 @@
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.todo-title {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-group {
+    margin-top: 10px;
+}
+
+.btn-group button {
+    margin-right: 5px;
+}

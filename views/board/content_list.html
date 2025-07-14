@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>todoApp - List</title>
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    {% include "template/login_header.html" %}
+    <ul>
+        {% for post in postList%}
+        <li>
+            <p onclick="udtBtnClick({{post.id}})">제목 : {{post.subject}}</p>
+            <p>작성자 : {{post.author}}</p>
+            <input type="hidden" value="{{post.id}}" name="id" id="id">
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
+    <script>
+        function udtBtnClick(idNum) {
+            const url = `../board/content/${idNum}`
+            location.href = url
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>todoApp - Login</title>
+</head>
+<body>
+    <header>
+        <strong>todoApp</strong>
+        <nav style="float: right;">
+            <a href="/list">List</a>
+            <a href="/write" style="margin-left: 20px;">Write</a>
+        </nav>
+    </header>
+    <form action="/login" method="post">
+        <p><strong>ID</strong></p>
+        <input type="text" name="username"><br><br>
+        <p><strong>PASSWORD</strong></p>
+        <input type="password" name="pw"><br><br>
+        <button type="submit">로그인</button>
+    </form>
+    <br><br>
+    <a href="/register">회원가입</a>
+</body>
+</html>

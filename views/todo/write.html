@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>todoApp - Write</title>
+</head>
+<body>
+    {% include "template/login_header.html" %}
+    <form action="/create" method="post">
+        <p><strong>todo</strong></p>
+        <textarea cols="50" rows="10" name="todo"></textarea><br><br>
+        <p><strong>due date</strong></p>
+        <input type="date" name="dueDate"><br><br>
+        <button type="submit">작성하기</button>
+    </form>
+</body>
+</html>

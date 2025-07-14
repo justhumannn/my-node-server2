@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>todoApp - Write</title>
+</head>
+<body>
+    {% include "template/login_header.html" %}
+    <form action="/edit" method="post">
+        <p><strong>todo</strong></p>
+        <input type="text" name="todo" id="todo" value="{{udtPost.todo}}"><br><br>
+        <p><strong>due date</strong></p>
+        <input type="text" name="dueDate" id="dueDate" value="{{udtPost.dueDate}}"><br><br>
+        <input type="hidden" name="id" value="{{udtPost.id}}" id="id">
+        <button type="submit">수정하기</button>
+    </form>
+</body>
+</html>

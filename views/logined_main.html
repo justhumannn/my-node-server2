@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>todoApp - Login</title>
+</head>
+<body>
+    {% include "template/login_header.html" %}
+    <p>환영합니다, {{user.username}}님</p>
+    <form action="/logout" method="post">
+        <button type="submit">로그아웃</button>
+    </form>
+</body>
+</html>

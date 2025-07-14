@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>todoApp - Write</title>
+</head>
+<body>
+    {% include "template/login_header.html" %}
+    <form action="/board/create" method="post">
+        <p><strong>제목</strong></p>
+        <input type="text" name="subject"><br><br>
+        <p><strong>내용</strong></p>
+        <textarea cols="50" rows="10" name="content"></textarea><br><br>
+        <button type="submit">작성하기</button>
+    </form>
+</body>
+</html>

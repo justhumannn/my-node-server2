@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>todoApp - List</title>
+    <link rel="stylesheet" href="/css/list.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    {% include "template/login_header.html" %}
+    <ul>
+        {% for post in postList%}
+        <li>
+            <form action="/delete" method="post">
+                <input type="text" name="id" style="display: none;" value="{{post.id}}">
+                <p class="todo-title">todo</p>
+                <p>{{post.todo | nl2br | safe}}</p>
+                <p class="todo-title">due date</p>
+                <p>{{post.dueDate}}</p>
+                <div class="btn-group">
+                    <button type="button" onclick="udtBtnClick({{post.id}})">수정하기</button>
+                    <button type="submit">삭제하기</button>
+                </div>
+            </form>
+        </li>
+        {% end for %}
+    </ul>
+    <script>
+        function udtBtnClick(idNum) {
+            const url = `http://localhost:8000/edit/${idNum}`
+            location.href = url
+        }
+    </script>
+</body>
+</html>

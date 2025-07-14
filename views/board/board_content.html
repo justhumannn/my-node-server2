@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    {% include "template/login_header.html" %}
+    <form action="../delete" method="post">
+        <h3>제목 : {{post.subject}}</h3>
+        <label for="content">내용</label>
+        <p id="content">{{post.content | nl2br | safe}}</p>
+        <p>작성자 : {{post.author}}</p>
+        <button type="button" onclick="udtBtnClick({{post.id}})">수정하기</button>
+        <input type="hidden" name="id" value="{{post.id}}" id="id">
+        <button type="submit">삭제하기</button>
+    </form>
+    <script>
+        function udtBtnClick(idNum) {
+            const url = `http://localhost:8000/board/edit/${idNum}`
+            location.href = url
+        }
+    </script>
+</body>
+</html>
