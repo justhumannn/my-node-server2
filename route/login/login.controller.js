@@ -12,7 +12,6 @@ exports.loginPostMid = (req,res) => {
             if (result[0].password === pw){
                 console.log('login success');
                 req.session.user = result[0]
-                console.log(username)
                 req.session.is_logined = true
                 res.redirect('./logined/main')
             }else {
