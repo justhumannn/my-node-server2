@@ -17,8 +17,6 @@ const io = new Server(server);
 const sessionMiddleware = require('./session/session.js');
 
 app.use(sessionMiddleware);
-
-// 📌 바디파서, 정적파일, 뷰 엔진 설정
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/public`));
 
@@ -38,10 +36,12 @@ app.use('/', registerRouter);
 app.use('/', boardRouter);
 app.use('/',chatRouter);
 
-// 📌 Socket.IO 핸들러 등록
 setupSocket(io);
 
-// 📌 서버 실행
+app.get('/index', (req, res) => {
+  res.render('index.html');
+})
+
 const PORT = 8000;
 server.listen(PORT, () => {
   console.log(`🟢 Server running at http://localhost:${PORT}`);

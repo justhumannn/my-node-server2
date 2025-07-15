@@ -1,28 +1,98 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>todoApp - List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
     <link rel="stylesheet" href="/css/list.css">
-    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    {% include "template/login_header.html" %}
-    <ul>
-        {% for post in postList%}
-        <li>
-            <p onclick="udtBtnClick({{post.id}})">제목 : {{post.subject}}</p>
-            <p>작성자 : {{post.author}}</p>
-            <input type="hidden" value="{{post.id}}" name="id" id="id">
-        </li>
-        <hr>
-        {% endfor %}
-    </ul>
-    <script>
-        function udtBtnClick(idNum) {
-            const url = `../board/content/${idNum}`
-            location.href = url
-        }
-    </script>
+<!-- Header -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-section">
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <circle cx="12" cy="16" r="1"/>
+                    <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <span class="logo-text">Company</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link">홈</a>
+            <a href="#" class="nav-link">서비스</a>
+            <a href="#" class="nav-link">소개</a>
+            <a href="#" class="nav-link">고객지원</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-secondary">회원가입</button>
+            <button class="btn-primary">로그인</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <div class="content-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">게시글 목록</h1>
+            <p class="page-description">최신 게시글을 확인하세요</p>
+        </div>
+
+        <!-- Post List Container -->
+        <div class="post-list-container">
+            <!-- Search and Filter Section -->
+            <div class="list-controls">
+                <div class="search-section">
+                    <div class="search-input-container">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        <input type="text" class="search-input" placeholder="게시글 검색...">
+                    </div>
+                    <button class="search-btn">검색</button>
+                </div>
+                <button class="write-btn">글쓰기</button>
+            </div>
+
+            <!-- Post List -->
+            <div class="post-list-wrapper">
+                <ul class="post-list" id="postList">
+                    {% for post in postList%}
+                    <li class="post-item">
+                        <p onclick="udtBtnClick({{post.id}})">제목 : {{post.subject}}</p>
+                        <p>작성자 : {{post.author}}</p>
+                        <input type="hidden" value="{{post.id}}" name="id" id="id">
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn prev-btn" disabled>이전</button>
+                <div class="pagination-numbers">
+                    <button class="pagination-number active">1</button>
+                    <button class="pagination-number">2</button>
+                    <button class="pagination-number">3</button>
+                    <span class="pagination-dots">...</span>
+                    <button class="pagination-number">10</button>
+                </div>
+                <button class="pagination-btn next-btn">다음</button>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    function udtBtnClick(idNum) {
+        const url = `../board/content/${idNum}`
+        location.href = url
+    }
+</script>
 </body>
 </html>
