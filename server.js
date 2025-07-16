@@ -27,6 +27,8 @@ app.use('/', loginRouter);
 app.use('/', registerRouter);
 app.use('/', boardRouter);
 
-app.listen(8000, () => {
-  console.log(`http://localhost:8000/`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
