@@ -2,17 +2,38 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 작성</title>
     <link rel="stylesheet" href="/css/main.css">
-    <title>todoApp - Write</title>
+    <link rel="stylesheet" href="/css/todo-create-page.css">
 </head>
 <body>
-    {% include "template/login_header.html" %}
-    <form action="/create" method="post">
-        <p><strong>todo</strong></p>
-        <textarea cols="50" rows="10" name="todo"></textarea><br><br>
-        <p><strong>due date</strong></p>
-        <input type="date" name="dueDate"><br><br>
-        <button type="submit">작성하기</button>
-    </form>
+{% include "template/login_header.html" %}
+<!-- Main Content - Todo Creation -->
+<main class="main-content">
+    <div class="content-container create-form-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">새로운 할 일 작성</h2>
+                <p class="card-description">오늘 할 일을 기록해보세요.</p>
+            </div>
+            <div class="card-content">
+                <form class="form-grid" action="/create" method="post">
+                    <div class="form-group">
+                        <label for="todo-content" class="label">할 일 내용</label>
+                        <textarea id="todo-content" class="textarea" rows="5" placeholder="할 일을 입력하세요." name="todo"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="todo-date" class="label">날짜</label>
+                        <input type="date" id="todo-date" class="input" name="dueDate">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">작성하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>
+
+

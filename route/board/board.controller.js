@@ -37,7 +37,7 @@ exports.boardCreatePostMid = (req,res) => {
         (error,result) => {
             if (error) return console.log(error);
             console.log('저장완료');
-            res.redirect('../board/list');
+            res.redirect('/board/list');
         }
     )
 }
@@ -51,7 +51,7 @@ exports.boardEditPostMid = (req,res) => {
         where id = '${id}'`,
         (error,result) => {
             if (error) console.log(error);
-            res.redirect('../board/list')
+            res.redirect('/board/list')
         }
     )
 }
@@ -71,7 +71,7 @@ exports.boardDeletePostMid = (req,res) => {
         if (username === result[0].author) {
             db.query(`delete from board where id = '${id}'`, (error,result) => {
                 if (error) return console.log(error);
-                res.redirect('../board/list');
+                res.redirect('/board/list');
             })
         }
     })

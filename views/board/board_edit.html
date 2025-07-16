@@ -1,19 +1,61 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/main.css">
-    <title>todoApp - Write</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 수정</title>
+    <link rel="stylesheet" href="/css/post-edit-page.css">
 </head>
 <body>
-    {% include "template/login_header.html" %}
-    <form action="/board/edit" method="post">
-        <p><strong>제목</strong></p>
-        <input type="text" name="subject" id="subject" value="{{udtPost.subject}}"><br><br>
-        <p><strong>내용</strong></p>
-        <textarea name="content" id="content">{{udtPost.content}}</textarea>
-        <input type="hidden" name="id" value="{{udtPost.id}}" id="id">
-        <button type="submit">수정하기</button>
-    </form>
+<!-- Header -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-section">
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <circle cx="12" cy="16" r="1"/>
+                    <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <span class="logo-text">Company</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link">홈</a>
+            <a href="#" class="nav-link">서비스</a>
+            <a href="#" class="nav-link">소개</a>
+            <a href="#" class="nav-link">고객지원</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content - Post Edit -->
+<main class="main-content">
+    <div class="content-container create-form-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">게시글 수정</h2>
+                <p class="card-description">게시글 내용을 수정하고 저장하세요.</p>
+            </div>
+            <div class="card-content">
+                <form class="form-grid" action="/board/edit" method="post">
+                    <div class="form-group">
+                        <label for="post-title" class="label">제목</label>
+                        <input type="text" id="post-title" class="input" placeholder="게시글 제목을 입력하세요." name="subject" value="{{udtPost.subject}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="post-content" class="label">내용</label>
+                        <textarea id="post-content" class="textarea" rows="10" placeholder="게시글 내용을 입력하세요.">{{udtPost.content}}</textarea>
+                    </div>
+                    <input type="hidden" name="id" value="{{udtPost.id}}" id="id">
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-submit">저장하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

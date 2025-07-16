@@ -1,0 +1,287 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(to bottom right, #f8fafc, #e2e8f0);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.site-header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #2563eb;
+    border-radius: 0.5rem;
+    color: white;
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.15s ease-in-out;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #2563eb;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -0.5rem;
+    left: 50%;
+    background-color: #2563eb;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Base Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+    background-color: #f8fafc;
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.btn-danger {
+    background-color: #dc2626; /* 빨간색 */
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #b91c1c;
+}
+
+/* Small button variant for list items */
+.btn-sm {
+    padding: 0.3rem 0.6rem; /* 더 작은 패딩 */
+    font-size: 0.75rem; /* 더 작은 폰트 */
+}
+
+/* Main Content */
+.main-content {
+    padding: 2rem 0;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Card Styles (reused from post-detail) */
+.card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px; /* List cards usually wider than form cards */
+}
+
+.card-header {
+    padding: 1.5rem 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.card-description {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+/* Todo List Specific Styles */
+.todo-list {
+    list-style: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+    margin: 0;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    gap: 1rem; /* 정보와 버튼 사이 간격 */
+}
+
+.todo-item:last-child {
+    border-bottom: none; /* 마지막 항목은 하단 선 없음 */
+}
+
+.todo-info {
+    display: flex;
+    flex-direction: column; /* 내용과 날짜를 세로로 정렬 */
+    flex-grow: 1; /* 정보 부분이 공간을 채우도록 */
+}
+
+.todo-text {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.todo-date {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-top: 0.25rem; /* 내용과의 간격 */
+}
+
+.todo-actions {
+    display: flex;
+    gap: 0.5rem; /* 버튼들 사이 간격 */
+    flex-shrink: 0; /* 버튼 그룹이 줄어들지 않도록 */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 0.75rem;
+    }
+    .nav-menu,
+    .header-actions {
+        display: none;
+    }
+    .logo-text {
+        font-size: 1.125rem;
+    }
+    .logo-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+
+    .card {
+        padding: 0;
+    }
+    .card-content {
+        padding: 1rem;
+    }
+    .card-header {
+        padding: 1rem 1rem 0.75rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .todo-item {
+        flex-direction: column; /* 모바일에서 세로로 정렬 */
+        align-items: flex-start; /* 왼쪽 정렬 */
+        gap: 0.5rem; /* 항목 내부 요소 간 간격 */
+    }
+    .todo-info {
+        width: 100%; /* 정보 부분이 너비를 꽉 채우도록 */
+    }
+    .todo-actions {
+        width: 100%; /* 버튼 그룹이 너비를 꽉 채우도록 */
+        justify-content: flex-end; /* 버튼들을 오른쪽으로 정렬 */
+    }
+}

@@ -1,19 +1,66 @@
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/main.css">
-    <title>todoApp - Write</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 수정</title>
+    <link rel="stylesheet" href="/css/todo-edit-page.css">
 </head>
 <body>
-    {% include "template/login_header.html" %}
-    <form action="/edit" method="post">
-        <p><strong>todo</strong></p>
-        <input type="text" name="todo" id="todo" value="{{udtPost.todo}}"><br><br>
-        <p><strong>due date</strong></p>
-        <input type="text" name="dueDate" id="dueDate" value="{{udtPost.dueDate}}"><br><br>
-        <input type="hidden" name="id" value="{{udtPost.id}}" id="id">
-        <button type="submit">수정하기</button>
-    </form>
+<!-- Header -->
+<header class="site-header">
+    <div class="header-container">
+        <div class="logo-section">
+            <div class="logo-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <circle cx="12" cy="16" r="1"/>
+                    <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <span class="logo-text">Company</span>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link">홈</a>
+            <a href="#" class="nav-link">서비스</a>
+            <a href="#" class="nav-link">소개</a>
+            <a href="#" class="nav-link">고객지원</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn-secondary">회원가입</button>
+            <button class="btn-primary">로그인</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content - Todo Edit -->
+<main class="main-content">
+    <div class="content-container create-form-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">할 일 수정</h2>
+                <p class="card-description">할 일 내용을 수정하고 저장하세요.</p>
+            </div>
+            <div class="card-content">
+                <form class="form-grid" action="/edit" method="post">
+                    <div class="form-group">
+                        <label for="todo-content" class="label">할 일 내용</label>
+                        <textarea id="todo-content" class="textarea" rows="5" placeholder="할 일을 입력하세요." name="todo">{{udtPost.todo}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="todo-date" class="label">날짜</label>
+                        <input type="date" id="todo-date" class="input" name="dueDate" value="{{udtPost.dueDate}}">
+                    </div>
+                    <input type="hidden" name="id" value="{{udtPost.id}}" id="id">
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-submit">저장하기</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>
