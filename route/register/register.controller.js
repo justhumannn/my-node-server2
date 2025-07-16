@@ -6,7 +6,7 @@ exports.registerGetMid = (req,res) => {
 
 exports.registerPostMid = (req,res) => {
     const {username,pw,pw_check} = req.body;
-    if (username.length == 0 || pw.length == 0 || pw_check.length == 0){
+    if (username.length === 0 || pw.length === 0 || pw_check.length === 0){
         console.log('register failed1')
         res.redirect('/')
     }
