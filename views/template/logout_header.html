@@ -14,16 +14,24 @@
 
     <!-- 네비게이션 메뉴 -->
     <nav class="nav-menu">
-      <a href="#" class="nav-link">홈</a>
-      <a href="#" class="nav-link">서비스</a>
-      <a href="#" class="nav-link">소개</a>
-      <a href="#" class="nav-link">고객지원</a>
+      <a href="/list" class="nav-link">todo list</a>
+      <a href="/write" class="nav-link">todo write</a>
+      <a href="/board/list" class="nav-link">board list</a>
+      <a href="/board/write" class="nav-link">board write</a>
     </nav>
 
     <!-- 액션 버튼들 -->
-    <div class="header-actions">
-      <button class="btn-secondary">회원가입</button>
-      <button class="btn-primary">로그인</button>
-    </div>
+    <form action="/login" method="GET">
+      <div class="header-actions">
+        <button class="btn-secondary" type="button" onclick="udtBtnClick()">회원가입</button>
+        <button class="btn-primary" type="submit">로그인</button>
+      </div>
+    </form>
   </div>
 </header>
+<script>
+  function udtBtnClick() {
+    const url = `/register`
+    location.href = url
+  }
+</script>

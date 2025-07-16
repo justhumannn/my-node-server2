@@ -7,15 +7,11 @@ exports.mainGetMid = (req,res) => {
 }
 
 exports.listGetMid = (req, res) => {
-    const is_logined = req.session.is_logined
-    if (is_logined == true){
-        db.query(`select * from todo`, (error, result)=> {
-            if (error) return console.log(error);
+    db.query(`select * from todo`, (error, result)=> {
+        if (error) return console.log(error);
 
-            res.render('todo/list.html', {postList:result})
-        })
-    }
-    else res.redirect('/')
+        res.render('todo/list.html', {postList:result})
+    })
 }
 exports.writeGetMid = (req,res) => {
     const is_logined = req.session.is_logined
@@ -38,7 +34,7 @@ exports.createPostMid = (req,res) => {
         (error,result) => {
             if (error) return console.log(error);
             console.log('저장완료');
-            res.redirect('http://localhost:8000/list');
+            res.redirect('/list');
         }
     )
 }
@@ -46,7 +42,7 @@ exports.createPostMid = (req,res) => {
 exports.deletePostMid = (req,res) => {
     db.query(`delete from todo where id = '${req.body.id}'`, (error,result) => {
         if (error) return console.log(error);
-        res.redirect('http://localhost:8000/list');
+        res.redirect('/list');
     })
 }
 
@@ -59,7 +55,7 @@ exports.editPostMid = (req,res) => {
         where id = '${id}'`,
         (error,result) => {
             if (error) console.log(error);
-            res.redirect('http://localhost:8000/list')
+            res.redirect('/list')
         }
     )
 }
