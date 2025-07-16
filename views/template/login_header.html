@@ -1,10 +1,23 @@
-<header>
-  <strong>todoApp</strong>
-  <nav style="float: right;">
-    <a href="/list">List</a>
-    <a href="/write" style="margin-left: 20px; margin-right: 20px;">Write</a>
-    <a href="/board/write" style="margin-left: 20px; margin-right: 20px;">board write</a>
-    <a href="/board/list">board list</a>
-    <a href="/chat">chat</a>
-  </nav>
+<header class="site-header">
+  <div class="header-container">
+    <!-- 로고 섹션 -->
+    <div class="logo-section">
+      <div class="logo-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+          <circle cx="12" cy="16" r="1"/>
+          <path d="m7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <span class="logo-text">Company</span>
+    </div>
+
+    <!-- 네비게이션 메뉴 -->
+    <nav class="nav-menu">
+      <a href="/list" class="nav-link">todo list</a>
+      <a href="/write" class="nav-link">todo write</a>
+      <a href="/board/list" class="nav-link">board list</a>
+      <a href="/board/write" class="nav-link">board write</a>
+    </nav>
+  </div>
 </header>
