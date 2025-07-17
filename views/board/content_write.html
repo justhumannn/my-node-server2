@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,11 +20,11 @@
                 <form class="form-grid" action="/board/create" method="POST">
                     <div class="form-group">
                         <label for="post-title" class="label">제목</label>
-                        <input type="text" id="post-title" class="input" placeholder="게시글 제목을 입력하세요.">
+                        <input type="text" id="post-title" class="input" placeholder="게시글 제목을 입력하세요." name="subject">
                     </div>
                     <div class="form-group">
                         <label for="post-content" class="label">내용</label>
-                        <textarea id="post-content" class="textarea" rows="10" placeholder="게시글 내용을 입력하세요."></textarea>
+                        <textarea id="post-content" class="textarea" rows="10" placeholder="게시글 내용을 입력하세요." name="content"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-submit">작성하기</button>
                 </form>
