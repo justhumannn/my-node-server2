@@ -6,7 +6,7 @@ exports.loginGetMid = (req,res) => {
 
 exports.loginPostMid = (req,res) => {
     const {username,pw} = req.body;
-    db.query(`select * from users where username = '${username}'`, (error,result) => {
+    db.query('select * from users where username = ?',[username], (error,result) => {
         if (error) return console.log(error);
         if (result.length) {
             if (result[0].password === pw){

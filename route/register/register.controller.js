@@ -18,8 +18,7 @@ exports.registerPostMid = (req,res) => {
         db.query('select * from users where username = ?',[username], (error,results) => {
             if (error) return console.log(error)
             if (results.length === 0){
-                db.query(`insert into users (username,password) values
-                    ('${username}','${pw}')`, (error, result) => {
+                db.query('insert into users (username,password) values (?,?)',[username,pw], (error, result) => {
                         if (error) return console.log(error)
                         res.redirect('/login')
                 })

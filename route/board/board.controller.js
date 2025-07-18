@@ -19,9 +19,9 @@ exports.boardWriteGetMid = (req,res) => {
 exports.boardEditIdGetMid = (req,res) => {
     const {username} = req.session.user
     const id = Number(req.params.id);
-    db.query(`select author from board where id = '${id}'`, (error,result) => {
+    db.query('select author from board where id = ?', [username],(error,result) => {
         if (username === result[0].author) {
-            db.query(`select * from board where id = '${id}'`, (error,result) => {
+            db.query('select * from board where id = ?',[id], (error,result) => {
                 if (error) return console.log(error);
                 res.render('board/board_edit.html',{udtPost:result[0]})
             })
@@ -32,8 +32,7 @@ exports.boardEditIdGetMid = (req,res) => {
 exports.boardCreatePostMid = (req,res) => {
     const {username} = req.session.user
     db.query(
-        `insert into board(subject,content,author) values 
-        ('${req.body.subject}','${req.body.content}','${username}')`,
+        'insert into board(subject,content,author) values (?,?,?)',[req.body.subject,req.body.content,username],
         (error,result) => {
             if (error) return console.log(error);
             console.log('저장완료');
@@ -47,8 +46,7 @@ exports.boardEditPostMid = (req,res) => {
     const content = req.body.content;
     const id = Number(req.body.id)
     db.query (
-        `update board set subject = '${subject}',content = '${content}'
-        where id = '${id}'`,
+        'update board set subject = ? ,content = ? where id = ?',[subject,content,id],
         (error,result) => {
             if (error) console.log(error);
             res.redirect('/board/list')
@@ -58,7 +56,7 @@ exports.boardEditPostMid = (req,res) => {
 
 exports.boardContentGetMid = (req,res) => {
     const id = Number(req.params.id)
-    db.query (`select * from board where id = '${id}'`, (error,result) => {
+    db.query ('select * from board where id = ?',[id], (error,result) => {
         if (error) return console.log(error)
         res.render('board/board_content.html',{post:result[0]})
     })
@@ -67,9 +65,9 @@ exports.boardContentGetMid = (req,res) => {
 exports.boardDeletePostMid = (req,res) => {
     const {username} = req.session.user
     const id = Number(req.body.id);
-    db.query(`select * from board where id = ${id}`, (error,result) => {
+    db.query('select * from board where id = ?',[id], (error,result) => {
         if (username === result[0].author) {
-            db.query(`delete from board where id = '${id}'`, (error,result) => {
+            db.query('delete from board where id = ?',[id], (error,result) => {
                 if (error) return console.log(error);
                 res.redirect('/board/list');
             })

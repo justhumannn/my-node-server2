@@ -7,7 +7,7 @@ exports.mainGetMid = (req,res) => {
 }
 
 exports.listGetMid = (req, res) => {
-    db.query(`select * from todo`, (error, result)=> {
+    db.query('select * from todo', (error, result)=> {
         if (error) return console.log(error);
 
         res.render('todo/list.html', {postList:result})
@@ -21,7 +21,7 @@ exports.writeGetMid = (req,res) => {
 
 exports.eidtIdGetMid = (req,res) => {
     const id = Number(req.params.id);
-    db.query(`select * from todo where id = '${id}'`, (error,result) => {
+    db.query('select * from todo where id = ?',[id], (error,result) => {
         if (error) return console.log(error);
         console.log(result)
         res.render('todo/edit.html',{udtPost:result[0]})
@@ -29,8 +29,7 @@ exports.eidtIdGetMid = (req,res) => {
 }
 
 exports.createPostMid = (req,res) => {
-    db.query(
-        `insert into todo(todo,dueDate) values ('${req.body.todo}','${req.body.dueDate}')`,
+    db.query('insert into todo(todo,dueDate) values (?, ?)',[req.body.todo,req.body.dueDate],
         (error,result) => {
             if (error) return console.log(error);
             console.log('저장완료');
@@ -40,7 +39,7 @@ exports.createPostMid = (req,res) => {
 }
 
 exports.deletePostMid = (req,res) => {
-    db.query(`delete from todo where id = '${req.body.id}'`, (error,result) => {
+    db.query('delete from todo where id = ?',[req.body.id], (error,result) => {
         if (error) return console.log(error);
         res.redirect('/list');
     })
@@ -51,8 +50,7 @@ exports.editPostMid = (req,res) => {
     const dueDate = req.body.dueDate;
     const id = Number(req.body.id)
     db.query (
-        `update todo set todo = '${todo}',dueDate = '${dueDate}'
-        where id = '${id}'`,
+        'update todo set todo = ? ,dueDate = ? where id = ?',[todo,dueDate,id],
         (error,result) => {
             if (error) console.log(error);
             res.redirect('/list')
