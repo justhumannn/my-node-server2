@@ -17,9 +17,9 @@ exports.boardWriteGetMid = (req,res) => {
 }
 
 exports.boardEditIdGetMid = (req,res) => {
-    const {username} = req.session.user
+    const username = req.session.user.username
     const id = Number(req.params.id);
-    db.query('select author from board where id = ?', [username],(error,result) => {
+    db.query('select * from board where id = ?', [id],(error,result) => {
         if (username === result[0].author) {
             db.query('select * from board where id = ?',[id], (error,result) => {
                 if (error) return console.log(error);
