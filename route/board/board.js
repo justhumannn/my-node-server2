@@ -10,5 +10,6 @@ router.post('/board/create',boardMid.boardCreatePostMid);
 router.post('/board/delete',boardMid.boardDeletePostMid);
 router.post('/board/edit',boardMid.boardEditPostMid);
 router.post('/board/delete',boardMid.boardDeletePostMid);
+router.post('/board/like/:id',boardMid.boardLikeIdPostMid);
 
 module.exports = router

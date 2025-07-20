@@ -32,7 +32,7 @@ exports.boardEditIdGetMid = (req,res) => {
 exports.boardCreatePostMid = (req,res) => {
     const {username} = req.session.user
     db.query(
-        'insert into board(subject,content,author) values (?,?,?)',[req.body.subject,req.body.content,username],
+        'insert into board(subject,content,author,likes) values (?,?,?,?)',[req.body.subject,req.body.content,username,0],
         (error,result) => {
             if (error) return console.log(error);
             console.log('저장완료');
@@ -73,4 +73,32 @@ exports.boardDeletePostMid = (req,res) => {
             })
         }
     })
+}
+
+exports.boardLikeIdPostMid = (req,res) => {
+    const id = Number(req.params.id)
+    const likes = Number(req.body.likes)
+    const liked = req.session.liked
+    if (liked === undefined ||liked[id] === undefined || liked[id] === false) {
+        db.query('update board set likes = ? where id = ?', [likes + 1, id], (error, result) => {
+            if (error) return console.log(error);
+            db.query('select * from board where id = ?', [id], (error, result) => {
+                if (error) return console.log(error);
+                if (liked === undefined) {
+                    req.session.liked = {}
+                }
+                req.session.liked[id] = true
+                res.redirect(`/board/content/${id}`)
+            })
+        })
+    } else {
+        db.query('update board set likes = ? where id = ?', [likes - 1, id], (error, result) => {
+            if (error) return console.log(error);
+            db.query('select * from board where id = ?', [id], (error, result) => {
+                if (error) return console.log(error);
+                req.session.liked[id] = false
+                res.redirect(`/board/content/${id}`)
+            })
+        })
+    }
 }
