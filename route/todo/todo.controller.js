@@ -1,9 +1,12 @@
 const db = require('../../db/db.js')
 
 exports.mainGetMid = (req,res) => {
-    const is_logined = req.session.is_logined
-    if (is_logined == true) res.redirect('/logined/main')
-    else res.render('main.html')
+    db.query('select * from board order by likes desc', (error, result) => {
+        if (error) return console.log(error);
+        const is_logined = req.session.is_logined
+        if (is_logined === true) res.redirect('/logined/main')
+        else res.render('main.html',{postList:result})
+    })
 }
 
 exports.listGetMid = (req, res) => {

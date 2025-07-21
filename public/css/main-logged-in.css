@@ -98,25 +98,16 @@ body {
     gap: 0.75rem;
 }
 
-/* Base Button Styles */
-.btn {
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.15s ease-in-out;
-    text-decoration: none; /* 링크처럼 사용될 경우를 대비 */
-    display: inline-flex; /* 아이콘과 텍스트 정렬을 위해 */
-    align-items: center; /* 아이콘과 텍스트 정렬을 위해 */
-    justify-content: center; /* 내용 중앙 정렬 */
-    gap: 0.25rem; /* 아이콘과 텍스트 사이 간격 */
-}
-
-.btn-primary {
-    background-color: #2563eb;
-    color: white;
-    border: none;
+    transition: background-color 0.15s ease-in-out;
 }
 
 .btn-primary:hover {
@@ -141,30 +132,10 @@ body {
     color: #2563eb;
 }
 
-.btn-danger {
-    background-color: #dc2626; /* 빨간색 */
-    color: white;
-    border: none;
-}
-
-.btn-danger:hover {
-    background-color: #b91c1c;
-}
-
-.btn-like {
-    background-color: #ef4444; /* 좋아요 버튼 색상 (빨간색 계열) */
-    color: white;
-    border: none;
-}
-
-.btn-like:hover {
-    background-color: #dc2626;
-}
-
-.like-icon {
-    width: 1rem;
-    height: 1rem;
-    fill: currentColor; /* 아이콘 색상을 텍스트 색상과 동일하게 */
+/* Small button variant for list items */
+.btn-sm {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
 }
 
 /* Main Content */
@@ -182,89 +153,87 @@ body {
     align-items: center;
 }
 
-/* Post Detail Container */
-.post-detail-container {
-    max-width: 800px;
-    width: 100%;
-}
-
-.post-card {
+/* Card Styles (reused from previous forms/lists) */
+.card {
     background: white;
     border-radius: 0.75rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     width: 100%;
-    padding: 2rem;
+    max-width: 800px; /* List cards usually wider */
 }
 
-.post-header {
+.card-header {
+    padding: 1.5rem 1.5rem 1rem;
+    text-align: center;
     border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
 }
 
-.post-title {
-    font-size: 2rem;
-    font-weight: 700;
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
     color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.card-description {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+/* Post List Specific Styles */
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    gap: 1rem;
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.post-item-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.post-item-summary {
+    font-size: 0.9375rem;
+    color: #475569;
     margin-bottom: 0.5rem;
-    line-height: 1.2;
 }
 
 .post-meta {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: #64748b;
-    margin-bottom: 1rem;
 }
 
 .post-author::after {
     content: " | ";
 }
 
-.post-action-buttons {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
-    justify-content: flex-end;
-}
-
-.post-body {
-    line-height: 1.8;
-    color: #374151;
-}
-
-.post-body p {
-    margin-bottom: 1rem;
-}
-
-.post-body h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
-.post-body h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-}
-
-.post-body ul {
-    list-style: disc;
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.post-body li {
-    margin-bottom: 0.5rem;
-}
-
 .post-actions {
-    margin-top: 2rem;
-    text-align: center;
+    flex-shrink: 0;
 }
-

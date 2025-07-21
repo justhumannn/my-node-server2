@@ -372,34 +372,3 @@ body {
     color: #9ca3af;
     padding: 0 0.5rem;
 }
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .list-controls {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 1rem;
-    }
-
-    .search-section {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .search-input {
-        width: 100%;
-    }
-
-    .post-header {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .post-meta {
-        flex-wrap: wrap;
-    }
-
-    .pagination-numbers {
-        display: none;
-    }
-}

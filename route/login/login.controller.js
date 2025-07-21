@@ -31,6 +31,13 @@ exports.logoutPostMid = (req,res) => {
 }
 
 exports.loginedMainGetMid = (req,res) => {
-    const {user} = req.session
-    res.render('logined_main.html',{user})
+    const is_logined = req.session.is_logined
+    if (!is_logined) {
+        res.redirect('/')
+    } else{
+        db.query('select * from board order by likes desc', (error, result) => {
+            if (error) return console.log(error);
+            res.render('logined_main.html', {postList:result})
+        })
+    }
 }

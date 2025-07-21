@@ -89,16 +89,13 @@ exports.boardLikeIdPostMid = (req,res) => {
         } catch (e) {
             console.error("liked_users JSON 파싱 오류:", e);
         }
-
         const alreadyLiked = likedUsers.includes(username);
         const newLikes = alreadyLiked ? board.likes - 1 : board.likes + 1;
-
         if (alreadyLiked) {
             likedUsers = likedUsers.filter(u => u !== username);
         } else {
             likedUsers.push(username);
         }
-
         db.query(
             'UPDATE board SET likes = ?, liked_users = ? WHERE id = ?',
             [newLikes, JSON.stringify(likedUsers), id],

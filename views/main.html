@@ -2,12 +2,39 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/main.css">
-    <title>todoApp - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 화면 (로그아웃)</title>
+    <link rel="stylesheet" href="/css/main-logged-in.css">
 </head>
 <body>
-    {% include "template/logout_header.html" %}
-    <p>메인화면입니다</p>
+{% include "template/logout_header.html" %}
+
+<!-- Main Content - Post List -->
+<main class="main-content">
+    <div class="content-container list-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">최신 게시글</h2>
+                <p class="card-description">다양한 주제의 게시글을 확인해보세요.</p>
+            </div>
+            <div class="card-content">
+                <ul class="post-list">
+                    {% for post in postList%}
+                    <li class="post-item" onclick="location.href='/board/content/{{post.id}}';">
+                        <div class="post-info">
+                            <h3 class="post-item-title">{{post.subject}}</h3>
+                            <div class="post-meta">
+                                <span class="post-author">{{post.author}}</span>
+                                <span class="post-date">{{post.created_at}}</span>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>
 

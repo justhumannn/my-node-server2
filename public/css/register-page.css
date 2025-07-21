@@ -217,30 +217,3 @@ body {
 .link-secondary:hover {
     color: #334155; /* hover:text-slate-700 */
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .page-container {
-        padding: 0.75rem; /* Adjust padding for smaller screens */
-    }
-
-    .main-title {
-        font-size: 1.25rem; /* Smaller title on mobile */
-    }
-
-    .subtitle {
-        font-size: 0.875rem; /* Smaller subtitle on mobile */
-    }
-
-    .card-header {
-        padding: 1rem 1rem 1rem;
-    }
-
-    .card-title {
-        font-size: 1.125rem;
-    }
-
-    .card-content {
-        padding: 1rem;
-    }
-}

@@ -127,6 +127,12 @@ body {
     background: transparent;
     color: #64748b;
     border: 1px solid #d1d5db;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
 }
 
 .btn-secondary:hover {
@@ -231,35 +237,4 @@ body {
     font-size: 1rem;
     font-weight: 600;
     margin-top: 1rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header-container {
-        padding: 0 0.75rem;
-    }
-    .nav-menu,
-    .header-actions {
-        display: none;
-    }
-    .logo-text {
-        font-size: 1.125rem;
-    }
-    .logo-icon {
-        width: 2.25rem;
-        height: 2.25rem;
-    }
-
-    .card {
-        padding: 0; /* 카드 자체 패딩 제거, 내부 content에서 조절 */
-    }
-    .card-content {
-        padding: 1rem;
-    }
-    .card-header {
-        padding: 1rem 1rem 0.75rem;
-    }
-    .card-title {
-        font-size: 1.25rem;
-    }
 }
