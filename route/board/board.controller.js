@@ -55,7 +55,7 @@ exports.boardEditPostMid = (req,res) => {
     )
 }
 
-exports.boardContentGetMid = (req,res) => {
+exports.boardContentIdGetMid = (req,res) => {
     const id = Number(req.params.id)
     db.query ('select * from board where id = ?',[id], (error,result) => {
         if (error) return console.log(error)

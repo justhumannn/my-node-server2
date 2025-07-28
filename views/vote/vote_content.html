@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>투표 상세</title>
+  <link rel="stylesheet" href="/css/vote-detail-page.css">
+</head>
+<body>
+{% include "template/login_header.html" %}
+
+<main class="main-content">
+  <div class="content-container vote-detail-container">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="vote-title">{{votes.title}}</h1>
+        <div class="vote-meta">
+          <span class="vote-author">{{votes.author}}</span>
+          <span class="vote-date"></span>
+        </div>
+      </div>
+      <div class="card-content">
+        <h3 class="section-title">투표 항목</h3>
+        <ul class="vote-options-list">
+          {% for vote in votes.vote_content %}
+          <li class="vote-option-item" onclick="location.href='/vote/{{vote[0]}}/{{votes.id}}';">
+            <span class="option-text">{{vote[0]}} {{vote[1]}}표</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="vote-detail-actions">
+        <div class="action-buttons-group">
+          <button class="btn btn-secondary btn-edit">수정</button>
+          <button class="btn btn-danger btn-delete">삭제</button>
+        </div>
+        <button class="btn btn-secondary btn-back-to-list">목록으로 돌아가기</button>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

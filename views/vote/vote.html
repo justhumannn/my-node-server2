@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>투표 목록</title>
+  <link rel="stylesheet" href="/css/list.css">
+</head>
+<body>
+{% include "template/login_header.html" %}
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-container">
+    <!-- Page Header -->
+    <div class="page-header">
+      <h1 class="page-title">게시글 목록</h1>
+      <p class="page-description">최신 게시글을 확인하세요</p>
+    </div>
+
+    <!-- Post List Container -->
+    <div class="post-list-container">
+      <!-- Search and Filter Section -->
+      <div class="list-controls">
+        <div class="search-section">
+          <div class="search-input-container">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input type="text" class="search-input" placeholder="투표 검색...">
+          </div>
+          <button class="search-btn">검색</button>
+        </div>
+        <button class="write-btn" onclick="udtBtnClick2()">투표 만들기</button>
+      </div>
+      <div class="post-list-wrapper">
+        <ul class="post-list" id="postList">
+          {% for post in postList%}
+          <li class="post-item" onclick="udtBtnClick({{post.id}})">
+            <p>제목 : {{post.title}}</p>
+            <p>작성자 : {{post.author}}</p>
+            <input type="hidden" value="{{post.id}}" name="id" id="id">
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="pagination-btn prev-btn" disabled>이전</button>
+        <div class="pagination-numbers">
+          <button class="pagination-number active">1</button>
+          <button class="pagination-number">2</button>
+          <button class="pagination-number">3</button>
+          <span class="pagination-dots">...</span>
+          <button class="pagination-number">10</button>
+        </div>
+        <button class="pagination-btn next-btn">다음</button>
+      </div>
+    </div>
+  </div>
+</main>
+<script>
+  function udtBtnClick(idNum) {
+    const url = `../vote/content/${idNum}`
+    location.href = url
+  }
+  function udtBtnClick2(){
+    location.href = "/vote/write"
+  }
+</script>
+</body>
+</html>

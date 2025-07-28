@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>투표 작성</title>
+    <link rel="stylesheet" href="/css/vote-create-page.css">
+</head>
+<body>
+{% include "template/login_header.html" %}
+
+<main class="main-content">
+    <div class="content-container create-form-container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">새 투표 작성</h2>
+                <p class="card-description">새로운 투표를 작성하여 공유해보세요.</p>
+            </div>
+            <div class="card-content">
+                <form class="form-grid" action="/vote/write" method="POST">
+                    <div class="form-group">
+                        <label for="vote-title" class="label">투표 제목</label>
+                        <input type="text" id="vote-title" class="input" placeholder="투표 제목을 입력하세요." name="title">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="label">투표 항목</label>
+                        <div id="poll-options-container" class="poll-options-container">
+                            <!-- Initial poll option -->
+                            <div class="poll-option-item">
+                                <input type="text" class="input poll-option-input" placeholder="투표 항목을 입력하세요." name="poll_option">
+                                <button type="button" class="btn-remove-option">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" id="add-option-btn" class="btn btn-secondary btn-add-option">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 5v14"/><path d="M5 12h14"/>
+                            </svg>
+                            항목 추가
+                        </button>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">작성하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/js/vote-create-page.js"></script>
+</body>
+</html>
