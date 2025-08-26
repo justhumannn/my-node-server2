@@ -7,6 +7,7 @@ const loginRouter = require('./route/login/login.js');
 const registerRouter = require('./route/register/register.js');
 const boardRouter = require('./route/board/board.js');
 const voteRouter = require('./route/vote/vote.js');
+const commentRouter = require('./route/comment/comment.js');
 
 const app = express();
 const sessionMiddleware = require('./session/session.js');
@@ -28,6 +29,7 @@ app.use('/', loginRouter);
 app.use('/', registerRouter);
 app.use('/', boardRouter);
 app.use('/', voteRouter);
+app.use('/', commentRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -57,9 +57,18 @@ exports.boardEditPostMid = (req,res) => {
 
 exports.boardContentIdGetMid = (req,res) => {
     const id = Number(req.params.id)
-    db.query ('select * from board where id = ?',[id], (error,result) => {
+    db.query ('select b.id,subject,content,author,likes,created_at,comment from board b, comment c where b.id = content_id and b.id = ?',
+        [id], (error,result) => {
         if (error) return console.log(error)
-        res.render('board/board_content.html',{post:result[0]})
+        console.log(result)
+        if (result.length === 0)  {
+            db.query('select * from board where id = ?',
+                [id],(error,result1) => {
+                if (error) return console.log(error);
+                    res.render('board/board_content.html',{postList:result1})
+            })
+        }
+        else res.render('board/board_content.html',{postList:result})
     })
 }
 

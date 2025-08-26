@@ -14,15 +14,15 @@
     <div class="content-container post-detail-container">
         <div class="post-card">
             <div class="post-header">
-                <h1 class="post-title">{{post.subject}}</h1>
+                <h1 class="post-title">{{postList[0].subject}}</h1>
                 <div class="post-meta">
-                    <span class="post-author">{{post.author}}</span>
-                    <span class="post-date">{{post.created_at}}</span>
+                    <span class="post-author">{{postList[0].author}}</span>
+                    <span class="post-date">{{postList[0].created_at}}</span>
                 </div>
             </div>
             <div class="post-body">
                 <!-- 게시글 내용이 들어갈 곳 -->
-                <p>{{post.content | nl2br | safe}}</p>
+                <p>{{postList[0].content | nl2br | safe}}</p>
             </div>
             <div class="post-actions">
                 <form action="/board/delete" method="post">
@@ -38,10 +38,19 @@
                         <svg class="like-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5L12 22z"/>
                         </svg>
-                        좋아요 {{post.likes}}개
+                        좋아요 {{postList[0].likes}}개
                     </button>
                     <input type="hidden" value="{{post.likes}}" name="likes">
                 </form>
+                <form action="/board/comment/{{postList[0].id}}" method="post">
+                    <input type="text" name="comment">
+                    <button class="btn btn-comment" type="submit">작성하기</button>
+                </form>
+                <ul>{% for post in postList %}
+                    <li>{{post.comment}}</li>
+                    {% endfor %}
+                </ul>
+
                 <br>
                 <button class="btn btn-secondary btn-back-to-list" onclick="udtBtnClick2()">목록으로 돌아가기</button>
             </div>

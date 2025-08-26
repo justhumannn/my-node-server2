@@ -6,6 +6,7 @@ exports.voteGetMid = (req, res) => {
         res.render('vote/vote.html', {postList:result})
     })
 }
+
 exports.voteCreateGetMid = (req, res) => {
     res.render('vote/vote_write.html')
 }
@@ -45,20 +46,14 @@ exports.voteContentVoteGetMid = (req, res) => {
         if (results.length === 0) return res.status(404).send('게시글이 없습니다.');
 
         const vote = results[0];
-
-        // JSON 파싱
         let voteContent = Array.isArray(vote.vote_content) ? vote.vote_content : JSON.parse(vote.vote_content || '[]');
         let votedUsers = Array.isArray(vote.vote_user) ? vote.vote_user : JSON.parse(vote.vote_user || '[]');
-
-        // 이 유저가 이전에 투표한 항목 찾기
         let previousVote = null;
         votedUsers.forEach(u => {
             if (u.startsWith(username + ":")) {
                 previousVote = u.split(":")[1];
             }
         });
-
-        // 1️⃣ 이전 투표가 있으면 해당 항목 -1
         if (previousVote) {
             voteContent = voteContent.map(([option, count]) => {
                 if (option === previousVote) {
@@ -66,11 +61,8 @@ exports.voteContentVoteGetMid = (req, res) => {
                 }
                 return [option, count];
             });
-            // 이전 기록 제거
             votedUsers = votedUsers.filter(u => !u.startsWith(username + ":"));
         }
-
-        // 2️⃣ 같은 항목을 다시 클릭하면 취소만 하고 종료
         if (previousVote === content) {
             return db.query(
                 'UPDATE vote SET vote_content = ?, vote_user = ? WHERE id = ?',
@@ -81,8 +73,6 @@ exports.voteContentVoteGetMid = (req, res) => {
                 }
             );
         }
-
-        // 3️⃣ 새로운 항목에 +1
         voteContent = voteContent.map(([option, count]) => {
             if (option === content) {
                 return [option, count + 1];
@@ -91,8 +81,6 @@ exports.voteContentVoteGetMid = (req, res) => {
         });
 
         votedUsers.push(`${username}:${content}`);
-
-        // DB 업데이트
         db.query(
             'UPDATE vote SET vote_content = ?, vote_user = ? WHERE id = ?',
             [JSON.stringify(voteContent), JSON.stringify(votedUsers), id],
