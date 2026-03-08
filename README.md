@@ -1,4 +1,4 @@
-서비스 중인 주소 : https://my-node-server2.onrender.com
+서비스 중인 주소 : https://my-node-server2.onrender.com // 현재 서비스 종료
 
 사용한 라이브러리 : express, session, nunjucks, bodyParser
 
